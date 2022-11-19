@@ -10,10 +10,10 @@ of 4 addresses are allowed. Workaround?)
 ## Requirements
 * Python 3.x
 * Libraries (all standard libs)
- * sys
- * csv
- * email
- * imaplib
+  * sys
+  * csv
+  * email
+  * imaplib
 
 ## Usage
 There are 3 arguments to invoke this with:
