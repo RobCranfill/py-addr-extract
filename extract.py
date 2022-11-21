@@ -72,11 +72,12 @@ def accumulate_goodness(biggus_dictus, list_of_name_and_address):
 if len(sys.argv) != 4:
     print(f"{sys.argv[0]} HOST USERNAME PASSWORD")
     exit(1)
-pAddress = sys.argv[1]
+pHost = sys.argv[1]
 pUser = sys.argv[2]
 pPassword = sys.argv[3]
+print(f"Loging in with '{pHost}', '{pUser}', '{pPassword}'...")
 
-mail = imaplib.IMAP4_SSL(pAddress)
+mail = imaplib.IMAP4_SSL(pHost)
 mail.login(pUser, pPassword)
 mail.select("INBOX")
 result, data = mail.search(None, "ALL")
@@ -85,8 +86,9 @@ ids = data[0].split()
 # ids = data_as_str[0].split()
 
 # FOR DEBUG
-# print("SHORTENING DATA....")
-# ids = ids[0:100]
+limit = 10000
+print(f"SHORTENING DATA TO FIRST {limit} ITEMS....")
+ids = ids[0:limit]
 
 # PROBLEM: ids is a tuple of bytes, but needs to be strings! (or does it?)
 # super cheesy way to fix:
