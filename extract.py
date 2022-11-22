@@ -56,6 +56,12 @@ def accumulate_goodness(biggus_dictus, list_of_name_and_address):
             skipped += 1
             return
 
+        if user_name.startswith("'") and user_name.endswith("'"):
+            user_name = user_name[1:-1]
+
+        # this doesn't fix much - if anything
+        # user_name = user_name.title()
+
         if user_name in biggus_dictus:
             addresses = biggus_dictus[user_name]
         else:
@@ -64,6 +70,8 @@ def accumulate_goodness(biggus_dictus, list_of_name_and_address):
             biggus_dictus[user_name] = addresses
         # print(f"  Prev set of addresses is {addresses}")
         addresses.add(email_addr)
+
+        # TODO: this could be smarter.
         if len(addresses) == 4:
             print(f"  **** MAX ADDRESSES HIT FOR '{user_name}'")
 
