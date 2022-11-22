@@ -1,5 +1,5 @@
 # py-addr-extract
-Python program to extract email addresses from an online inbox, creating a CSV file suitable for import into Google Contacts.
+Python program to extract email addresses from an online inbox and create a CSV file suitable for importing into Google Contacts.
 
 ## Overview
 This program will use IMAP to read the specified inbox (note: other Inboxes?) from your online email provider.
@@ -21,6 +21,12 @@ There are 3 arguments to invoke this with:
 * USER Your user name
 * PASSWORD Your email password
 
+ For example,
+
+   `python3 extract.py imap.gmail.com joe.blow@gmail.com 16_char_app_pwd!`
+
 ## Limitations
-* (MAJOR ISSUE) Does _not_ ignore case, so Foo@fum.com and foo@Fum.com are different; they should not be case-sensitive!
-* Only associates a maximum of 4 email addresses with a name.
+* (MAJOR ISSUE) Does _not_ ignore case, so it will consider Foo@fum.com and foo@Fum.com to be different. A semi-easy
+  fix to the code would be to use some sort of case-insensitive dictionary.
+* Only associates a maximum of 4 email addresses with a name. This is a limitation of the Google Contacts CSV format,
+  for which there is probably a work-around (create more than one entry and let Google Contacts 'merge' them?)

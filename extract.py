@@ -4,7 +4,7 @@ import csv
 import sys
 """
 Extract headers from online email and create a CSV file
- to import all found email addresses as contacts into GMail.
+ to import all found email addresses as contacts into Google Contacts.
 
 (c)2022 robcranfill@gmail.com
 based on https://qr.ae/pvQWFi
@@ -62,6 +62,9 @@ def accumulate_goodness(biggus_dictus, list_of_name_and_address):
         # this doesn't fix much - if anything
         # user_name = user_name.title()
 
+        # Note: this is where a case-insensitve dictionary would alleviate
+        # the problem of "joeblow@foo.com" and "JoeBlow@Foo.com" being considered different.
+        #
         if user_name in biggus_dictus:
             addresses = biggus_dictus[user_name]
         else:
